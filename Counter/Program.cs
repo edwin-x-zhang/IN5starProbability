@@ -32,15 +32,37 @@ class Counter
 
         return successChance;
     }
+
+    static void twoPullCounter(double[] successChance)
+    {
+        double[] totalPulls = new double[40];
+        for (int i = 0; i < 20; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                totalPulls[i+j] += successChance[i] * successChance[j];
+            }
+        }
+        double sanityCheck = 0;
+        for (int i = 0; i < 40; i++)
+        {
+            Console.WriteLine(100*totalPulls[i]);
+            sanityCheck += totalPulls[i];
+        }
+        Console.WriteLine("Sanity check: all probabilities should add to 1!");
+        Console.WriteLine(sanityCheck);
+    }
     static void Main(string[] args)
     {
         int maxPulls = 20;
         Console.WriteLine("Hello gongeous!");
         double[] successChance = ProbabilityTable(maxPulls);
+        twoPullCounter(successChance);
+        /*
         for (int i = 0; i < maxPulls; i++)
         {
             Console.WriteLine(100*successChance[i]);
         }
-
+        */
     }
 }
