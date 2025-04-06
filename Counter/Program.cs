@@ -9,8 +9,8 @@ class Counter
             "Pull count must be 20.");
         }
         double baseProbability = 0.015;
-        double softPity18 = 0.45;
-        double softPity19 = 0.55;
+        double softPity18 = 0.4;
+        double softPity19 = 0.7;
         double hardPity20 = 1;
 
         double[] successChance = new double[maxPulls];
