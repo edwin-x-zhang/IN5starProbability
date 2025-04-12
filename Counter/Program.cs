@@ -64,17 +64,21 @@ class Counter
     static void Main(string[] args)
     {
         int maxPulls = 20;
-        int pieces = 10;
+        int pieces = 20;
         double[] successChance = ProbabilityTable(maxPulls);
         double[] totalPulls = ProbabilityTableX(successChance, successChance, 1, pieces);
         double cumulativeChance = 0;
 
         using (var writer = new StreamWriter("output.csv"))
         {
-            for (int i = 0; i <= totalPulls.Length-pieces; i++)
+            for (int i = 1; i < pieces; i++)
             {
-                cumulativeChance += totalPulls[i];
-                writer.WriteLine(i+pieces + "," + totalPulls[i] + "," + cumulativeChance);
+                writer.WriteLine(i + "," + 0 + "," + 0);
+            }
+            for (int j = 0; j <= totalPulls.Length-pieces; j++)
+            {
+                cumulativeChance += totalPulls[j];
+                writer.WriteLine(j+pieces + "," + totalPulls[j] + "," + cumulativeChance);
             }
         }
         Console.WriteLine("Hello gongeous!");
