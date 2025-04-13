@@ -43,7 +43,7 @@ namespace Counter
             // Hard code to 10-piece 5* evo for demo purposes
             int totalPieces = 20; // 20 pieces for 10-piece 5* full evolution
             double[] pullChance = FiveStarPieceProbabilityTable(); // Probability distribution for 5* pieces
-            string label = "FiveStarOutfitEvo";
+            string label = "FiveStarOutfit" + totalPieces + "Pieces";
 
             Banner bannerOutfit = new Banner(pullChance, totalPieces, label);
             double[] totalPulls = bannerOutfit.GenerateProbabilityTable();
