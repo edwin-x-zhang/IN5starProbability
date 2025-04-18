@@ -1,5 +1,3 @@
-using System;
-
 namespace Counter;
 public class Banner
 {
@@ -18,6 +16,7 @@ public class Banner
 
     public double[] GenerateProbabilityTable()
     {
+        // Start the count with 1 piece
         return ProbabilityTableHelper(this.probabilityTable, 1);
     }
 
@@ -25,20 +24,25 @@ public class Banner
     {
         if (piece == maxPieces)
         {
+            // If we've counted all the pieces we want, just return the result
             return PreviousTable;
         }
         else
         {
             double[] successChance = new double[maxPullCount * (piece+1)];
 
-            for (int i = 0; i < maxPullCount; i++) // count through the possibilties of the current piece
+            // Count through the possibilties of the current piece
+            for (int i = 0; i < maxPullCount; i++)
             {
+                // Generate a new probability table with the probability of the
+                // current piece together with the previous probability table
                 for (int j = 0; j < PreviousTable.Length; j++)
                 {
                     successChance[i+j] += probabilityTable[i] * PreviousTable[j];
                 }
             }
 
+            // Use the new probability table to count the next piece
             return ProbabilityTableHelper(successChance, piece+1);
         }
     }
@@ -48,6 +52,9 @@ public class Banner
         double cumulativeChance = 0;
         using (var writer = new StreamWriter(fileLabel + "_output.csv"))
         {
+            // Because of 0-based counting, the blank entries in the probability
+            // table will be at the beginning rather than the end. Turn this
+            // order around when printing the output for better readability.
             for (int i = 1; i < maxPieces; i++)
             {
                 writer.WriteLine(i + "," + 0 + "," + 0);

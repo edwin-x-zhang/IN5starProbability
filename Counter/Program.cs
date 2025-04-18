@@ -1,14 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
-using System.Threading;
-using System.IO;
-
-namespace Counter
+﻿namespace Counter
 {
     class Counter
     {
-        // TODO: Create methods to generate probability distributions for 4* pieces
-        //       within the 5* banner as well as standalone 4* banners
+        // TODO:
+        // Create methods to generate probability distributions for 4*
+        // pieces within the 5* banner as well as standalone 4* banners
         static double[] FiveStarPieceProbabilityTable()
         {
             int maxPulls = 20;
@@ -43,8 +39,9 @@ namespace Counter
             // Hard code to 10-piece 5* evo for demo purposes
             int totalPieces = 20; // 20 pieces for 10-piece 5* full evolution
             double[] pullChance = FiveStarPieceProbabilityTable(); // Probability distribution for 5* pieces
-            string label = "FiveStarOutfit" + totalPieces + "Pieces";
+            string label = "FiveStarOutfit" + totalPieces + "Pieces"; // File label
 
+            // Use the Banner class to generate a probability table
             Banner bannerOutfit = new Banner(pullChance, totalPieces, label);
             double[] totalPulls = bannerOutfit.GenerateProbabilityTable();
 
