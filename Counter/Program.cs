@@ -33,8 +33,8 @@ namespace Counter
         {
             int maxPulls = 20;
             double baseProbability = 0.015;
-            double softPity18 = 0.4;
-            double softPity19 = 0.7;
+            double softPity18 = 0.365;
+            double softPity19 = 0.715;
             double hardPity20 = 1;
 
             double[] successChance = new double[maxPulls];
